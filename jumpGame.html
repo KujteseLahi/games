@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" onclick="jump()">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/jumpGame.css">
+    <title>JumpGame</title>
+</head>
+<body>
+    <div id="game">
+        <div id="charachter"></div>
+        <div id="block"></div>
+    </div> 
+
+
+
+
+
+
+
+
+
+
+    <script>
+        var charachter= document.getElementById("charachter");
+        var block=document.getElementById("block");
+        function jump(){
+            if(charachter.classList!="animate"){
+                charachter.classList.add("animate");
+            }
+            setTimeout(function(){
+                charachter.classList.remove("animate");
+            },500);
+        }
+
+        var checkDead=setInterval(function(){
+            var charachterTop= 
+            parseInt(window.getComputedStyle(charachter).getPropertyValue("top"));
+            
+            var blockLeft= 
+            parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+            if(blockLeft<20 && blockLeft>0 && charachterTop>=325){
+                block.style.animation="none";
+                block.style.display="none";
+
+                alert("you lose.");
+            }
+
+        },1);
+
+
+        </script>
+    
+</body>
+</html>
